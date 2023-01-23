@@ -1,9 +1,9 @@
 def call() 
 {
     sh '''
-    aws ecr get-login-password --region ${awsRegion} | docker login --username AWS --password-stdin ${ecrRepository}
-    docker build  -t ${dockerImage}:latest .
-    docker tag ${dockerImage}:${dockerTag} ${ecrRepository}:${dockerTag}
-    docker push ${ecrRepository}:${dockerTag}
+    aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${ECR_REPOSITORY}
+    docker build  -t ${DOCKER_IMAGE}:latest .
+    docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${ECR_REPOSITORY}:${DOCKER_TAG}
+    docker push ${ECR_REPOSITORY}:${DOCKER_TAG}
     '''
 }
