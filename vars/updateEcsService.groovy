@@ -1,4 +1,6 @@
-def updateEcsService(taskDefinition, service, cluster) {
-    def updateCommand = "aws ecs update-service --cluster ${cluster} --service ${service} --task-definition ${taskDefinition}"
-    sh updateCommand
+def updateEcsService()
+{
+    sh '''
+    aws ecs update-service --cluster ${CLUSTER} --service ${SERVICE} --task-definition ${TASKDEFINITION}"
+    '''
 }
